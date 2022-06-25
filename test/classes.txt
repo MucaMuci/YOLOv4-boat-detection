@@ -1,0 +1,10 @@
+Catamaran
+Cruiser
+Ferry
+Jetski
+Sailing_boat
+Small_boat
+Speedboat
+Tourist_ship
+Yacht
+w
