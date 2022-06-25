@@ -14,7 +14,7 @@ CNN made with YOLOv4 used for localizing and classifying boats in pictures and v
 !sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile
 
 ### verify CUDA
-!/usr/local/cuda/bin/nvcc --version
+`!/usr/local/cuda/bin/nvcc --version`
 
 ### make darknet (builds darknet so that you can then use the darknet executable file to run or train object detectors)
 !make
