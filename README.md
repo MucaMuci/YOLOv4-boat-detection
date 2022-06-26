@@ -154,4 +154,21 @@ After training, you can observe a chart of how your model did throughout the tra
 ```
 imShow('chart.png')
 ```
-### 
+###  Checking the Mean Average Precision (mAP) of Your Model
+If you didn't run the training with the '-map- flag added then you can still find out the mAP of your model after training. Run the following command on any of the saved weights from the training to see the mAP value for that specific weight's file. I would suggest to run it on multiple of the saved weights to compare and find the weights with the highest mAP as that is the most accurate one. If you think your final weights file has overfitted then it is important to run these mAP commands to see if one of the previously saved weights is a more accurate model for your classes:
+```
+!./darknet detector map data/obj.data cfg/yolov4-obj.cfg /content/drive/MyDrive/Nadzor_luke/backup/yolov4-obj_1000.weights
+```
+### Testing
+You now have a custom object detector to make your very own detections. Time to test it out. Need to set our custom cfg to test mode:   
+```
+%cd cfg
+!sed -i 's/batch=64/batch=1/' yolov4-obj.cfg
+!sed -i 's/subdivisions=16/subdivisions=1/' yolov4-obj.cfg
+%cd ..
+```
+Run your custom detector. Upload an image to your google drive to test, thresh flag sets accuracy that detection must be in order to show it:
+```
+!./darknet detector test data/obj.data cfg/yolov4-obj.cfg /content/drive/MyDrive/Nadzor_luke/backup/yolov4-obj_last.weights /mydrive/images/boatTest.jpg -thresh 0.3
+imShow('predictions.jpg')
+```
