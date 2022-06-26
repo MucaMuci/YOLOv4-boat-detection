@@ -68,6 +68,16 @@ In our case, we set steps to 14400 and 16200. Usually it is defined as **steps=0
 
 ![image](https://user-images.githubusercontent.com/92891601/175809318-84587f10-9404-4277-9d05-cccb25c6b16d.png)
 
+#### Filters
+Filters is defined as (*number_of_classes +5*) * *3*. So in our case, filters was set to (9+5) * 3 = 42. We will use this in the next step.
+
+#### YOLO layers
+There are three YOLO layers defined near the bottom of the config file. Last two things we need to do are:
+1. Change number of classes in each of YOLO layers (In our case *classes = 9*).  
+2. Change number of filters in first Convolutional layer before each YOLO layer.  
+
+![image](https://user-images.githubusercontent.com/92891601/175809590-20766bfa-0b1d-42b3-99ae-419815dc5a89.png)
+
 
 #### Random
 If you run into memory issues or find the training taking a super long time. In the last yolo layer in the cfg, change one line from random = 1 to random = 0 to speed up training but slightly reduce accuracy of model. **It will also help save memory** if you run into any memory issues.
