@@ -172,3 +172,6 @@ Run your custom detector. Upload an image to your google drive to test, thresh f
 !./darknet detector test data/obj.data cfg/yolov4-obj.cfg /content/drive/MyDrive/Nadzor_luke/backup/yolov4-obj_last.weights /mydrive/images/boatTest.jpg -thresh 0.3
 imShow('predictions.jpg')
 ```
+## Results
+You can check test results in uploaded TestVideo.pm4 
+
