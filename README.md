@@ -97,25 +97,43 @@ Create a new file within a code or text editor called obj.data where you will ha
 ![image](https://user-images.githubusercontent.com/92891601/175810113-94797b7b-c4ad-4f8f-968e-a995160f05d7.png)
 
 ### Upload the obj.names and obj.data
-After we're done with creating them, we just need to upload them first from our local storage to google drive, from where we will run:
+After we're done with creating them, we just need to upload them from our local storage to google drive. From there we will run:
 ```
 !cp /content/drive/MyDrive/Nadzor_luke/obj.names ./data  
 !cp /content/drive/MyDrive/Nadzor_luke/obj.data  ./data
 ```
-### upload the generate_train.py and generate_test.py script to cloud VM from Google Drive
+### Upload the generate_train.py and generate_test.py script
+Now we need to create train.txt and test.txt files as we said. To help you with that, you can run generate_train.py and generate_test.py scripts. But first, we have to transfer them from Google Drive to cloud VM: 
 ```
 !cp /content/drive/MyDrive/Nadzor_luke/generate_test.py ./  
 !cp /content/drive/MyDrive/Nadzor_luke/generate_train.py ./
 ```
 
 ### Generate train.txt and test.txt
+now we just need to run these two scripts:
 ```
 !python generate_train.py  
 !python generate_test.py
 ```
 
-### Start training
+### Get pretrained weights
+This step downloads the weights for the convolutional layers of the YOLOv4 network. By using these weights it helps your custom object detector to be way more accurate and not have to train as long. You don't have to use these weights but trust me it will help your modle converge and be accurate way faster.
 ```
 !wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137  
+```
+### Start training
+With that, everything is ready for training. Now we just need to run it:
+```
 !./darknet detector train /content/darknet/data/obj.data /content/darknet/cfg/yolov4-obj.cfg yolov4.conv.137 -dont_show -map
+```
+### LAST STEP
+```javascript
+function ClickConnect(){
+console.log("Working"); 
+document
+  .querySelector('#top-toolbar > colab-connect-button')
+  .shadowRoot.querySelector('#connect')
+  .click() 
+}
+setInterval(ClickConnect,50000)
 ```
