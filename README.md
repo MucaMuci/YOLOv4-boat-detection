@@ -64,7 +64,7 @@ It has to be any multiple of 32. **416 is standard**, but you can sometimes impr
 In our case, we set max_batches to 18000. It is defined as *number_of_classes* * *2000* with exception for projects with one or two classes, where *max_batches = 6000* is standard.
 
 #### Steps
-In our case, we set steps to 14400 and 16200. Usually it is defined as **steps=0.8 * *Max_batches*,0.9 * *Max_batches* **
+In our case, we set steps to 14400 and 16200. Usually it is defined as **steps=0.8 * *Max_batches*,0.9 * *Max_batches***
 
 ![image](https://user-images.githubusercontent.com/92891601/175809318-84587f10-9404-4277-9d05-cccb25c6b16d.png)
 
