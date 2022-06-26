@@ -122,11 +122,14 @@ This step downloads the weights for the convolutional layers of the YOLOv4 netwo
 !wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137  
 ```
 ### Start training
-With that, everything is ready for training. Now we just need to run it:
+With that, everything is ready for training. Now we just need to run it. Uncomment %%capture below if you run into memory issues or your Colab is crashing:  
 ```
+# %%capture
 !./darknet detector train /content/darknet/data/obj.data /content/darknet/cfg/yolov4-obj.cfg yolov4.conv.137 -dont_show -map
 ```
-### LAST STEP
+### Training...
+This training could take several hours depending on how many iterations you chose in the .cfg file. You will want to let this run as you sleep or go to work for the day, etc. However, Colab Cloud Service kicks you off it's VMs if you are idle for too long (30-90 mins). To avoid this hold (CTRL + SHIFT + i) at the same time to open up the inspector view on your browser. Paste the following code into your console window and hit Enter.  
+
 ```javascript
 function ClickConnect(){
 console.log("Working"); 
@@ -137,3 +140,18 @@ document
 }
 setInterval(ClickConnect,50000)
 ```
+### Colab crashes
+If for some reason you get an error or your Colab goes idle during training, you have not lost your partially trained model and weights! Every 100 iterations a weights file called yolov4-obj_last.weights is saved to /content/drive/MyDrive/Nadzor_luke/backup folder (wherever your backup folder is). This is why we created this folder in our Google drive and not on the cloud VM. If your runtime crashes and your backup folder was in your cloud VM you would lose your weights and your training progress. We can kick off training from our last saved weights file so that we don't have to restart. Just run the following command but with your backup location.
+```
+!./darknet detector train data/obj.data cfg/yolov4-obj.cfg /content/drive/MyDrive/Nadzor_luke/backup/yolov4-obj_last.weights -dont_show
+```
+kick off training from where it last saved:
+```
+!./darknet detector train data/obj.data cfg/yolov4-obj.cfg /content/drive/MyDrive/Nadzor_luke/backup/yolov4-obj_last.weights -dont_show
+```
+### show chart.png of how custom object detector did with training
+After training, you can observe a chart of how your model did throughout the training process by running the below command. It shows a chart of your average loss vs. iterations. For your model to be 'accurate' you should aim for a loss under 2. If you stop training or it crashes during training you can still check accuracy of your model in the next steps.
+```
+imShow('chart.png')
+```
+### 
