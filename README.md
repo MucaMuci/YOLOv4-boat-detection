@@ -93,7 +93,7 @@ Create a new file within a code or text editor called obj.names where you will h
 ![image](https://user-images.githubusercontent.com/92891601/175810060-2bd4077b-6074-4fc6-b4ce-7257bf12e51e.png)
 
 ### Create obj.data
-Create a new file within a code or text editor called obj.data where you will have paths to folders necessary for training. Don't worry about train.txt and test.txt files, we'll create them next. This backup path is where we will save the weights to of our model throughout training. Create a backup folder in your google drive and put its correct path in this file. 
+Create a new file within a code or text editor called obj.data where you will have paths to folders necessary for training. Don't worry about train.txt and test.txt files, we'll create them next. This backup path is where we will save the weights to of our model throughout training. Create a backup folder in your google drive and put its correct path in this file.  
 ![image](https://user-images.githubusercontent.com/92891601/175810113-94797b7b-c4ad-4f8f-968e-a995160f05d7.png)
 
 ### Upload the obj.names and obj.data
