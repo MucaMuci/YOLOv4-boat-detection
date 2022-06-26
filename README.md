@@ -81,11 +81,23 @@ There are three YOLO layers defined near the bottom of the config file. Last two
 
 #### Random
 If you run into memory issues or find the training taking a super long time. In the last yolo layer in the cfg, change one line from random = 1 to random = 0 to speed up training but slightly reduce accuracy of model. **It will also help save memory** if you run into any memory issues.
-### upload the custom .cfg back to cloud VM from Google Drive
+
+### Upload config file
+After changing all the necessary data in config file, upload it back to google drive. From there we have to transfer it back to cloud VM:
 ```
 !cp /content/drive/MyDrive/Nadzor_luke/yolov4-obj.cfg ./cfg
 ```
-### upload the obj.names and obj.data files to cloud VM from Google Drive
+### Create obj.names
+Create a new file within a code or text editor called obj.names where you will have one class name per line in the same order as your classes.txt from the dataset generation step. **You do not want to have spaces in your class name**.
+
+![image](https://user-images.githubusercontent.com/92891601/175810060-2bd4077b-6074-4fc6-b4ce-7257bf12e51e.png)
+
+### Create obj.data
+Create a new file within a code or text editor called obj.data where you will have paths to folders necessary for training. Don't worry about train.txt and test.txt files, we'll create them next. This backup path is where we will save the weights to of our model throughout training. Create a backup folder in your google drive and put its correct path in this file. 
+![image](https://user-images.githubusercontent.com/92891601/175810113-94797b7b-c4ad-4f8f-968e-a995160f05d7.png)
+
+### Upload the obj.names and obj.data
+After we're done with creating them, we just need to upload them first from our local storage to google drive, from where we will run:
 ```
 !cp /content/drive/MyDrive/Nadzor_luke/obj.names ./data  
 !cp /content/drive/MyDrive/Nadzor_luke/obj.data  ./data
