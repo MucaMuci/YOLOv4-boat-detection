@@ -173,5 +173,5 @@ Run your custom detector. Upload an image to your google drive to test, thresh f
 imShow('predictions.jpg')
 ```
 ## Results
-You can check test results in uploaded TestVideo.pm4 
+You can check test results in uploaded TestVideo.mp4 
 
