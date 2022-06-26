@@ -64,7 +64,13 @@ It has to be any multiple of 32. **416 is standard**, but you can sometimes impr
 In our case, we set max_batches to 18000. It is defined as *number_of_classes* * *2000* with exception for projects with one or two classes, where *max_batches = 6000* is standard.
 
 #### Steps
-In our case, we set steps to 14400 and 16200. Usually it is defined as steps=0.8 * *Max_batches*,0.9* *Max_batches*
+In our case, we set steps to 14400 and 16200. Usually it is defined as **steps=0.8 * *Max_batches*,0.9* *Max_batches* **
+
+![image](https://user-images.githubusercontent.com/92891601/175809318-84587f10-9404-4277-9d05-cccb25c6b16d.png)
+
+
+#### Random
+If you run into memory issues or find the training taking a super long time. In the last yolo layer in the cfg, change one line from random = 1 to random = 0 to speed up training but slightly reduce accuracy of model. **It will also help save memory** if you run into any memory issues.
 ### upload the custom .cfg back to cloud VM from Google Drive
 ```
 !cp /content/drive/MyDrive/Nadzor_luke/yolov4-obj.cfg ./cfg
